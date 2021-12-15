@@ -1,11 +1,14 @@
-# Jap task 1
+# Jap final task
 
 Usage Normative Calculator Application
 
 -You need to do the few things listed below before you can properly start the application.
 
--After you cloned the project, open the folder “NormativeCalculatorAPI ”, open the .sln , and in Package Manager Console type “update-database” to seed data into a database. 
-After that, start the project with (F5, ctrl F5). That project is API and on the startup, it will be Swagger with implemented endpoints ready for testing and use.
+-After you cloned the project, open the folder “NormativeCalculatorAPI ”, open the .sln , and in Package Manager Console choose as Default project: NormativeCalculator.Database and type
+“Update-database -Context NormativeCalculatorDBContext” to seed data into a database and also type 
+"Update-database -Context NormativeCalculatorLoggerDBContext" for add logging.
+
+After that, start the project with (F5, ctrl F5). That project is API and on the startup, it will be Swagger where you need to authorized for some endpoints. You can do that on click button Authorize and Login with Google Account.
 
 -After you started the Web API project, now you can open the folder “NormativeCalculatorUI/client”. Open this folder in Visual Studio Code. Open Terminal and use the command below for
 installing workspace npm dependencies:
