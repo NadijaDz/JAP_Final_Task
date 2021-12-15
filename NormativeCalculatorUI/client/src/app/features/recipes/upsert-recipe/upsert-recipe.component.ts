@@ -103,7 +103,6 @@ export class UpsertRecipeComponent implements OnInit {
   }
 
   onSubmit() {
-    
     if (this.recipeForm.invalid) {
       return;
     }

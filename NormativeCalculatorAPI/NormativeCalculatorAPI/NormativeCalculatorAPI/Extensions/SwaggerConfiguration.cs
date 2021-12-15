@@ -13,28 +13,11 @@ namespace NormativeCalculator.API.Extensions
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "NormativeCalculatorAPI", Version = "v1" });
-                c.AddSecurityDefinition("Cookie", new OpenApiSecurityScheme
+                c.AddSecurityDefinition("Auth with google", new OpenApiSecurityScheme
                 {
-                    Description = @"Cookies header using the Oauth2. \r\n\r\n 
-                      Enter 'auth_cokie' [space] and then your cookies in the text input below.
-                      \r\n\r\nExample: 'auth_cokie hdsjfshfbjshdgfj'",
-                    Name = "auth_cookie",
-                    In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.ApiKey,
-                    Scheme = "auth_cookie",
-                      
+                    Description = @"Please click this link for authorize  <a href='https://localhost:5001/api/Login/signin-google?provider=Google&returnUrl=https%3A%2F%2Flocalhost%3A5001%2Fswagger%2Findex.html'>Login with Google</a>",
                 });
 
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement()
-                {
-                    {new OpenApiSecurityScheme(){
-                    Reference = new OpenApiReference()
-                    {
-                        Id = "auth_cookie",
-                        Type = ReferenceType.SecurityScheme
-                    }
-                    }, new List<string>() }
-                });
             });
 
             return services;

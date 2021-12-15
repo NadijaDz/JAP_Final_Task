@@ -70,15 +70,12 @@ namespace NormativeCalculator.Services
                 {
                     var sortColumn = request.Columns[request.Order[0].Column].Data;
                     var orderBy = request.Order[0].Dir;
-
-                    //dataSorted = list.AsQueryable().OrderBy(sortColumn + " " + orderBy);
-                    list = list.OrderBy(sortColumn + " " + orderBy);//$
+                    list = list.OrderBy(sortColumn + " " + orderBy);
                 }
             }
 
             foreach (var f in request.Filter)
             {
-
                 if (!string.IsNullOrWhiteSpace(f.Property))
                 {
                     if (f.Property.Equals("Name"))

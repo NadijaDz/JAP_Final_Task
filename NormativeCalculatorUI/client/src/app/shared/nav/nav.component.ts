@@ -1,10 +1,5 @@
-import { DOCUMENT } from '@angular/common';
-import { Component, Inject, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
-import { first } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
-import { LoginService } from 'src/app/core/services/login.service';
 
 @Component({
   selector: 'app-nav',
@@ -25,5 +20,6 @@ export class NavComponent implements OnInit {
 
   logout() {
     this.authenticationService.logout();
+      this.isUserLoggedIn = false;
   }
 }

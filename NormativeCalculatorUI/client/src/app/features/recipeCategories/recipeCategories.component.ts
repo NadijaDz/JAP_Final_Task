@@ -38,7 +38,6 @@ export class RecipeCategoriesComponent implements OnInit {
         response.data.forEach((val) =>
           this.recipeCategories.push(Object.assign({}, val))
         );
-
         if (this.recipeCategories.length == response.totalCount) {
           this.isLodaMore = false;
         }

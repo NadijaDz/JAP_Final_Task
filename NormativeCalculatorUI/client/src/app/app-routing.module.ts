@@ -23,11 +23,8 @@ const routes: Routes = [
     {path:'recipeCategories/upsert-recipeCategory', component: UpsertRecipeCategoryComponent},
     {path:'recipeCategories/upsert-recipeCategory/:id', component: UpsertRecipeCategoryComponent},
     {path:'recipes/:id/:name/upsert-recipe/:recipeId', component: UpsertRecipeComponent},
-  
-
     ]},
    {path:'**', component: LoginComponent, pathMatch:'full'},
-    
 ];
 
 @NgModule({

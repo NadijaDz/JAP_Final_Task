@@ -11,6 +11,24 @@
    margin-right: 10px;
    text-align: center;
 }
-       
+
+.no-padding-left{
+    padding-left: 0!important;
+}
     
-  
+.no-padding-right{
+    padding-right: 0!important;
+}
+
+.full-width{
+    width: 100%;
+}
+
+.no-margin-left{
+    margin-left: 0!important;
+}
+    
+.no-margin-right{
+    margin-right: 0!important;
+}
+

@@ -100,7 +100,6 @@ namespace NormativeCalculator.Services
             if (!result.IsValid)
             {
                 throw new ArgumentException("Recipe validator is incorrect");
-
             }
 
             if (request.RecipeCategoryId == 0)

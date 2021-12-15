@@ -12,6 +12,7 @@ export class AuthenticationService {
   public currentUser: Observable<any>;
   cookieValue:any;
   isUserLoggedIn: boolean = false;
+  endpoint: string = 'Login';
 
   constructor(private http: HttpClient, private cookieService: CookieService,  private loginService: LoginService, private router: Router) {
     this.cookieValue = this.cookieService.get('auth_cookie');
@@ -40,7 +41,7 @@ export class AuthenticationService {
   }
 
   logout() {
-    this.loginService
+   return this.loginService
       .signout()
       .subscribe(() => {
         this.router.navigate(['/login']);

@@ -1,6 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { NgbActiveModal, NgbModal, NgbModalOptions,} from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbActiveModal,
+  NgbModal,
+  NgbModalOptions,
+} from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { first } from 'rxjs/operators';
 import { MeasureUnit } from 'src/app/core/models/measure-unit.model';
@@ -15,7 +19,7 @@ export class UpsertIngredientComponent implements OnInit {
   @Input() ingredientDetails;
   ingredientForm: FormGroup;
   measureUnits = MeasureUnit;
-  enumUnitKeys=[];
+  enumUnitKeys = [];
   closeResult: string;
   modalOptions: NgbModalOptions;
 
@@ -25,15 +29,17 @@ export class UpsertIngredientComponent implements OnInit {
     private modalService: NgbModal,
     public activeModal: NgbActiveModal
   ) {
-    this.enumUnitKeys = Object.keys(this.measureUnits).filter(f => !isNaN(Number(f)));
+    this.enumUnitKeys = Object.keys(this.measureUnits).filter(
+      (f) => !isNaN(Number(f))
+    );
   }
 
   ngOnInit() {
-
     this.initializeForm();
 
-    if(this.ingredientDetails != undefined && this.ingredientDetails != null){
-      this.ingredientDetails.measureUnit= MeasureUnit[this.ingredientDetails.measureUnit].toString();
+    if (this.ingredientDetails != undefined && this.ingredientDetails != null) {
+      this.ingredientDetails.measureUnit =
+        MeasureUnit[this.ingredientDetails.measureUnit].toString();
       this.ingredientForm.patchValue(this.ingredientDetails);
     }
   }
@@ -56,15 +62,13 @@ export class UpsertIngredientComponent implements OnInit {
   }
 
   onSubmit() {
-
     if (this.ingredientForm.invalid) {
       return;
     }
 
-    if(this.ingredientDetails != undefined && this.ingredientDetails != null){
+    if (this.ingredientDetails != undefined && this.ingredientDetails != null) {
       this.updateIngredient();
-    }
-    else{
+    } else {
       this.addNewIngredient();
     }
   }
@@ -98,5 +102,4 @@ export class UpsertIngredientComponent implements OnInit {
         }
       );
   }
-
 }

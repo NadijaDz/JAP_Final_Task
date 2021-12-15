@@ -168,5 +168,4 @@ export class IngredientsComponent implements OnInit {
       (reason) => {}
     );
   }
-
 }
