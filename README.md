@@ -37,8 +37,7 @@ name, description, ingredient with selected ingredient name, entered quantity of
 Application immediately calculated all entered value for ingredient and show how new recipe will be cost. 
 -User also can see details about recipe when click on button View Details next to each recipe.
 
-#TODO
--This application can be improved with:
- 1. Using middleware for error handling on backend 
- 2. Using http interceptors on frontend 
+Postman Collection Test:
 
+Import Normative Calculator.postman_collection.json into your Postman and test endpoints. For test endpoints you need auth_cookie from browser.
+You get this auth_cookie from Swagger after you login with Google account or via Frontend NormativeCalculator application where you need open developer console. Click on  application tab and under you can see the cookies and you can find cookies with name auth_cookie. You wiil need to copy value of cookie auth_cookie and return on Postman and go to  NormativeCollection tab Variables and and set as variable name of cookie for example: cookie and past in current value, value from frontend. If request which you want to test need a autorization you go on tab Headers  and set cookie from Collection where as Key you can add Cookie and as Value you put in {{}}  your value from variable {{cookie}} in NormativeCollection. And than you can test request. 
