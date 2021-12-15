@@ -22,12 +22,13 @@ namespace NormativeCalculatorAPI
             services.AddControllers();
             services.RegisterDbContextConfiguration(Configuration);
             services.RegisterSwaggerConfiguration(Configuration);
-            services.RegisterCookieConfiguration(Configuration);
             services.RegisterDIConfiguration(Configuration);
             services.RegisterAuthenticationConfiguration(Configuration);
             services.RegisterAutoMapperConfiguration(Configuration);
             services.RegisterIdentityConfiguration(Configuration);
+            services.RegisterCookieConfiguration(Configuration);
             services.RegisterFluentValidationConfiguration(Configuration);
+            services.AddHttpContextAccessor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -86,7 +86,6 @@ C:\Users\Nadija\Desktop\jap task 3\JAP_Final_Task\NormativeCalculatorAPI\Normati
 C:\Users\Nadija\Desktop\jap task 3\JAP_Final_Task\NormativeCalculatorAPI\NormativeCalculatorAPI\NormativeCalculator.Database\obj\Debug\net5.0\NormativeCalculator.Database.AssemblyInfoInputs.cache
 C:\Users\Nadija\Desktop\jap task 3\JAP_Final_Task\NormativeCalculatorAPI\NormativeCalculatorAPI\NormativeCalculator.Database\obj\Debug\net5.0\NormativeCalculator.Database.AssemblyInfo.cs
 C:\Users\Nadija\Desktop\jap task 3\JAP_Final_Task\NormativeCalculatorAPI\NormativeCalculatorAPI\NormativeCalculator.Database\obj\Debug\net5.0\NormativeCalculator.Database.csproj.CoreCompileInputs.cache
-C:\Users\Nadija\Desktop\jap task 3\JAP_Final_Task\NormativeCalculatorAPI\NormativeCalculatorAPI\NormativeCalculator.Database\obj\Debug\net5.0\NormativeCalculator.Database.csproj.CopyComplete
 C:\Users\Nadija\Desktop\jap task 3\JAP_Final_Task\NormativeCalculatorAPI\NormativeCalculatorAPI\NormativeCalculator.Database\obj\Debug\net5.0\NormativeCalculator.Database.dll
 C:\Users\Nadija\Desktop\jap task 3\JAP_Final_Task\NormativeCalculatorAPI\NormativeCalculatorAPI\NormativeCalculator.Database\obj\Debug\net5.0\ref\NormativeCalculator.Database.dll
 C:\Users\Nadija\Desktop\jap task 3\JAP_Final_Task\NormativeCalculatorAPI\NormativeCalculatorAPI\NormativeCalculator.Database\obj\Debug\net5.0\NormativeCalculator.Database.pdb

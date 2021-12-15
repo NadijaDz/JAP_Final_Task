@@ -8,7 +8,6 @@ namespace NormativeCalculator.API.Extensions
     {
         public static IServiceCollection RegisterDIConfiguration(this IServiceCollection services, IConfiguration config)
         {
-            services.AddHttpContextAccessor();
             services.AddScoped<IRecipeCategoryService, RecipeCategoryService>();
             services.AddScoped<IRecipeService, RecipeService>();
             services.AddScoped<IIngredientService, IngredientService>();
