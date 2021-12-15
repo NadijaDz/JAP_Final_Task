@@ -16,7 +16,7 @@ export class RecipesService {
         .set('skip', request.skip)
         .set('categoryId', request.categoryId)
         .set('searchQuery', request.searchQuery),
-      withCredentials: true,
+      withCredentials: true, //cuva cookie
     });
   }
 
@@ -28,6 +28,18 @@ export class RecipesService {
 
   getById(id: string) {
     return this.http.get(`${environment.apiUrl}${this.endpoint}/${id}`, {
+      withCredentials: true,
+    });
+  }
+  
+  delete(id) {
+    return this.http.delete(`${environment.apiUrl}${this.endpoint}/${id}`, {
+      withCredentials: true,
+    });
+  }
+
+  update(id, order: any) {
+    return this.http.put(`${environment.apiUrl}${this.endpoint}/${id}`, order, {
       withCredentials: true,
     });
   }

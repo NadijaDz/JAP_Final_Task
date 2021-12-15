@@ -15,5 +15,6 @@ namespace NormativeCalculator.Core.Models.Response
         public DateTime Created { get; set; }
 
         public int RecipeCategoryId { get; set; }
+        public decimal RecommendedPrice { get; set; }
     }
 }

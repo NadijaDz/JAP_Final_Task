@@ -16,4 +16,28 @@ export class RecipeCategoriesService {
       withCredentials: true,
     });
   }
+
+  save(order: any) {
+    return this.http.post(`${environment.apiUrl}${this.endpoint}`, order, {
+      withCredentials: true,
+    });
+  }
+
+  delete(id) {
+    return this.http.delete(`${environment.apiUrl}${this.endpoint}/${id}`, {
+      withCredentials: true,
+    });
+  }
+
+  getById(id) {
+    return this.http.get(`${environment.apiUrl}${this.endpoint}/${id}`, {
+      withCredentials: true,
+    });
+  }
+
+  update(id, order: any) {
+    return this.http.put(`${environment.apiUrl}${this.endpoint}/${id}`, order, {
+      withCredentials: true,
+    });
+  }
 }

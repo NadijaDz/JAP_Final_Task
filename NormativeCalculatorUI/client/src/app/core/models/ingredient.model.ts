@@ -18,7 +18,7 @@ export class Ingredient {
     createdAt: Date,
     measureUnit: MeasureUnit,
     isDeleted: boolean,
-    costIngredient: number
+    costIngredient: number,
   ) {
     this.id = id;
     this.name = name;

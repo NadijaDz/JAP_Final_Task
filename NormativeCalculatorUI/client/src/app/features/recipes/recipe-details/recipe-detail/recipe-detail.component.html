@@ -1,12 +1,12 @@
 <div class="modal-header">
-  <h5 class="modal-title"> Details for {{fromParent.name}}</h5>
+  <h5 class="modal-title"> Details for {{recipeDetails.name}}</h5>
   <button type="button" class="close" data-dismiss="modal" (click)="closeModal('dismiss')">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <div class="modal-body">
-  <label>Name: {{fromParent.name}}</label><br>
-  <label>Description: {{fromParent.description}}</label><br>
+  <label>Name: {{recipeDetails.name}}</label><br>
+  <label>Description: {{recipeDetails.description}}</label><br>
   <label>Ingredients for recipe: </label>
   <table class="table table-striped">
     <thead>
@@ -18,7 +18,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let i of fromParent.recipeIngredient">
+      <tr *ngFor="let i of recipeDetails.recipeIngredient">
         <td>{{i.ingredinentName}}</td>
         <td>{{i.unitQuantity}} </td>
         <td>{{i.measureUnits}}</td>
@@ -26,7 +26,7 @@
       </tr> 
     </tbody>
   </table>
-  <label style="float:right"> <strong>Total cost for this recipe is : {{fromParent.totalCost}} KM </strong></label>
+  <label style="float:right"> <strong>Total cost for this recipe is : {{recipeDetails.totalCost}} KM </strong></label>
 </div>
 <div class="modal-footer">
   <button class="btn btn-outline-dark" type="button" (click)="closeModal('close')"> Cancel</button>

@@ -1,16 +1,16 @@
-<div class="container" style="margin-top: 100px;">
+<div class="container margin-container">
   <h1>Recipes for category {{nameofCategory}}</h1>
   <div style="float:right">
     <input type="text" [(ngModel)]="filterValue" (input)="searchByFiltrer(filterValue)" placeholder="Search">
-    <button class="ml-3" type="button" [routerLink]="['add-recipe']">Add new recipe</button>
+    <button *ngIf="isUserLoggedIn" class="ml-3" type="button" [routerLink]="['upsert-recipe']">Add new recipe</button>
   </div>
-
   <table class="table table-striped">
     <thead>
       <tr>
         <th scope="col">Name</th>
         <th scope="col">Total cost recipe</th>
         <th scope="col">Description</th>
+        <th scope="col"></th>
         <th scope="col"></th>
       </tr>
     </thead>
@@ -20,6 +20,10 @@
         <td>{{recipe.totalCost}} KM</td>
         <td>{{recipe.description}}</td>
         <td><button (click)="getRecipeDetails(recipe.id)" class="btn btn-primary">View Details</button></td>
+        <td style="float: right;" *ngIf="isUserLoggedIn">
+          <button type="button" class="btn btn-info mr-3" [routerLink]="['upsert-recipe', recipe.id]">Edit</button>
+          <button type="button" class="btn btn-danger" (click)="delete(recipe.id)">Delete</button>
+        </td>
       </tr>
     </tbody>
   </table>

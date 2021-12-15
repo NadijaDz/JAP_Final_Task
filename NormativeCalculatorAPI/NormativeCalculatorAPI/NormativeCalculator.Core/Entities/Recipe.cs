@@ -20,5 +20,8 @@ namespace NormativeCalculator.Core.Entities
         public IdentityUser? User { get; set; }
 
         public IEnumerable<RecipeIngredient> RecipesIngredients { get; set; }
+
+        [Column(TypeName = "decimal(18,4)")]
+        public decimal RecommendedPrice { get; set; }
     }
 }

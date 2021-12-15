@@ -21,25 +21,39 @@ namespace NormativeCalculatorAPI.Controllers
             _userManager = userManager;
         }
 
-        [Authorize]
+        [AllowAnonymous]
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetRecipesByIdAsync(int id, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetRecipeById(int id, CancellationToken cancellationToken)
         {
             return Ok(await _recipesService.GetRecipeByIdAsync(id, cancellationToken));
         }
 
-        [Authorize]
+        [AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> GetRecipesAsync([FromQuery] RecipeSearchRequest request, CancellationToken cancellationToken)
+        public async Task<IActionResult> GetRecipes([FromQuery] RecipeSearchRequest request, CancellationToken cancellationToken)
         {
             return Ok(await _recipesService.GetRecipesAsync(request, cancellationToken));
         }
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> InsertRecipeAsync(AddRecipeRequest request, CancellationToken cancellationToken)
+        public async Task<IActionResult> InsertRecipe(AddRecipeRequest request, CancellationToken cancellationToken)
         {
             return Ok(await _recipesService.InsertRecipeAsync(request, cancellationToken));
+        }
+
+        [Authorize]
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateRecipe(int id, AddRecipeRequest request, CancellationToken cancellationToken)
+        {
+            return Ok(await _recipesService.UpdateRecipeAsync(id, request, cancellationToken));
+        }
+
+        [Authorize]
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteRecipe(int id, CancellationToken cancellationToken)
+        {
+            return Ok(await _recipesService.DeleteRecipeAsync(id, cancellationToken));
         }
     }
 }

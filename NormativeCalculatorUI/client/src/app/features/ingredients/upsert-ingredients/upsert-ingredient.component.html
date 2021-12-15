@@ -1,5 +1,6 @@
 <div class="modal-header">
-  <h5 class="modal-title">Modal title</h5>
+  <h5 class="modal-title" *ngIf="!ingredientDetails">Add new ingredient</h5>
+  <h5 class="modal-title" *ngIf="ingredientDetails">Edit  ingredient</h5>
   <button type="button" class="close" data-dismiss="modal" (click)="closeModal('dismiss')">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -7,7 +8,6 @@
 
 <div class="modal-body">
   <form [formGroup]="ingredientForm" (ngSubmit)="onSubmit()">
-
     <div class="form-group">
       <label for="name">*Name</label>
       <input type="text" id="name" name="name" formControlName="name" class="form-control"
@@ -31,12 +31,8 @@
       <select id="measureUnit" name="measureUnit" formControlName="measureUnit" class="form-control"
         [ngClass]="{ 'is-invalid':form.measureUnit.touched && form.measureUnit.errors }">
         <option [ngValue]="unit" *ngFor="let unit of enumUnitKeys">
-          <!-- <option [ngValue]="m.id" *ngFor="let m of measureUnits" [disabled]="m.isDisabled"> -->
           {{measureUnits[unit]}}
         </option>
-        <!-- <option [ngValue]="m.id" *ngFor="let m of measureUnits">
-          {{m.measureUnit}}
-        </option>  -->
       </select>
       <div *ngIf="form.measureUnit.errors" class="invalid-feedback">
         <div *ngIf="form.measureUnit.errors.required">Measure Unit is required</div>

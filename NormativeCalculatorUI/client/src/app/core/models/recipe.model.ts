@@ -6,6 +6,7 @@ export class Recipe {
   public createdAt: Date;
   public userId: number;
   public isDeleted: boolean;
+  public recommendedPrice: number;
 
   constructor(
     id: number,
@@ -14,7 +15,8 @@ export class Recipe {
     recipeCategoryId: number,
     createdAt: Date,
     userId: number,
-    isDeleted: boolean
+    isDeleted: boolean,
+    recommendedPrice: number
   ) {
     this.id = id;
     this.name = name;
@@ -23,5 +25,6 @@ export class Recipe {
     this.createdAt = createdAt;
     this.userId = userId;
     this.isDeleted = isDeleted;
+    this.recommendedPrice = recommendedPrice
   }
 }

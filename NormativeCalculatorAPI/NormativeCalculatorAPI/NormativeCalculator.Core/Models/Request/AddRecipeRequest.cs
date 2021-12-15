@@ -20,5 +20,7 @@ namespace NormativeCalculator.Core.Models.Request
         public string UserId { get; set; }
 
         public List<AddRecipeIngredientsDto> Ingredients { get; set; }
+
+        public decimal RecommendedPrice { get; set; }
     }
 }

@@ -13,9 +13,10 @@ export class LoginService {
   signout() {
     return this.http.get<any[]>(
       `${environment.apiUrl}` + this.endpoint + '/signout-google',
-      { withCredentials: true }
+      { withCredentials: true } //cuva cookie
     );
   }
+  
   signin() {
     return this.http.get<any[]>(
       `${environment.apiUrl}` + this.endpoint + '/signin-google',

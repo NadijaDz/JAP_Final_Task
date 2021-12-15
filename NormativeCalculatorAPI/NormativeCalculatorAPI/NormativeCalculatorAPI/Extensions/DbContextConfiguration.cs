@@ -12,6 +12,8 @@ namespace NormativeCalculator.API.Extensions
 
             services.AddDbContext<NormativeCalculatorDBContext>(options =>
                     options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<NormativeCalculatorLoggerDBContext>(options =>
+                  options.UseSqlServer(config.GetConnectionString("LoggerConnection")));
 
             return services;
         }

@@ -7,12 +7,12 @@ import { MeasureUnit } from 'src/app/core/models/measure-unit.model';
 import { IngredientsService } from 'src/app/core/services/ingredients.service';
 
 @Component({
-  selector: 'app-add-ingredients',
-  templateUrl: './add-ingredients.component.html',
-  styleUrls: ['./add-ingredients.component.css'],
+  selector: 'app-upsert-ingredient',
+  templateUrl: './upsert-ingredient.component.html',
+  styleUrls: ['./upsert-ingredient.component.css'],
 })
-export class AddIngredientsComponent implements OnInit {
-  @Input() fromParent;
+export class UpsertIngredientComponent implements OnInit {
+  @Input() ingredientDetails;
   ingredientForm: FormGroup;
   measureUnits = MeasureUnit;
   enumUnitKeys=[];
@@ -29,7 +29,13 @@ export class AddIngredientsComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.initializeForm();
+
+    if(this.ingredientDetails != undefined && this.ingredientDetails != null){
+      this.ingredientDetails.measureUnit= MeasureUnit[this.ingredientDetails.measureUnit].toString();
+      this.ingredientForm.patchValue(this.ingredientDetails);
+    }
   }
 
   initializeForm() {
@@ -50,12 +56,37 @@ export class AddIngredientsComponent implements OnInit {
   }
 
   onSubmit() {
+
     if (this.ingredientForm.invalid) {
       return;
     }
 
+    if(this.ingredientDetails != undefined && this.ingredientDetails != null){
+      this.updateIngredient();
+    }
+    else{
+      this.addNewIngredient();
+    }
+  }
+
+  addNewIngredient() {
     this.ingredientService
       .save(this.ingredientForm.value)
+      .pipe(first())
+      .subscribe(
+        (data) => {
+          this.toastr.success('Data is successfully saved!', 'Success!');
+          this.closeModal(data);
+        },
+        (error) => {
+          this.toastr.error('Something went wrong', 'Error!');
+        }
+      );
+  }
+
+  updateIngredient() {
+    this.ingredientService
+      .update(this.ingredientDetails.id, this.ingredientForm.value)
       .pipe(first())
       .subscribe(
         (data) => {

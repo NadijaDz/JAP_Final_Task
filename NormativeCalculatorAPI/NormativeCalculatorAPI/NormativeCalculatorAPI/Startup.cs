@@ -19,16 +19,15 @@ namespace NormativeCalculatorAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.RegisterDbContextConfiguration(Configuration);
             services.RegisterSwaggerConfiguration(Configuration);
+            services.RegisterCookieConfiguration(Configuration);
             services.RegisterDIConfiguration(Configuration);
             services.RegisterAuthenticationConfiguration(Configuration);
             services.RegisterAutoMapperConfiguration(Configuration);
-            services.RegisterCookieConfiguration(Configuration);
             services.RegisterIdentityConfiguration(Configuration);
-
+            services.RegisterFluentValidationConfiguration(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,1 +1,16 @@
 
+.confirm.modal-body .content {
+    text-align: center;
+}
+.confirm.modal-body .buttons {
+    padding: 25px 15px;
+    text-align: center;
+}
+
+.confirm.modal-body .buttons button{
+   margin-right: 10px;
+   text-align: center;
+}
+       
+    
+  

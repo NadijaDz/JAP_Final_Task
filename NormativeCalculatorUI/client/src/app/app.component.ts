@@ -10,18 +10,9 @@ import { AuthenticationService } from './core/services/authentication.service';
 export class AppComponent {
   cookieValue:any;
   isUserLoggedIn: boolean = false;
-  constructor(private authenticationservice: AuthenticationService,private cookieService: CookieService) { }
+  constructor(private authenticationService: AuthenticationService) { }
 
 ngOnInit() {
-  this.cookieValue = this.cookieService.get('auth_cookie');
-  if(this.cookieValue != null && this.cookieValue != undefined && this.cookieValue!= ''){
-    this.isUserLoggedIn=true;
-  }
-  else{
-    this.isUserLoggedIn=false;
-  }
+    this.isUserLoggedIn = this.authenticationService.isUserLoggedIn;
 }
-
-
-
 }

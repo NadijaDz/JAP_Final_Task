@@ -18,6 +18,7 @@ namespace NormativeCalculator.Mapper.Mapping
             CreateMap<Ingredient, AddIngredientRequest>().ReverseMap();
             CreateMap<Recipe, AddRecipeRequest>().ReverseMap();
             CreateMap<RecipeIngredient, AddRecipeIngredientsDto>().ReverseMap();
+            CreateMap<RecipeCategory, AddRecipeCategoryRequest>().ReverseMap();
         }
     }
 }

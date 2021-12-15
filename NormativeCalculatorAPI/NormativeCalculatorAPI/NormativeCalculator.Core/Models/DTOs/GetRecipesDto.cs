@@ -18,5 +18,7 @@ namespace NormativeCalculator.Core.Models.DTOs
         public int RecipeCategory_Id { get; set; }
 
         public IEnumerable<GetRecipesIngredientsDto> RecipeIngredient { get; set; }
+
+        public decimal RecommendedPrice { get; set; }
     }
 }

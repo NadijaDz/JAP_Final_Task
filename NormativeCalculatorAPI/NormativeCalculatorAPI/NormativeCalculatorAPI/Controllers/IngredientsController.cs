@@ -19,16 +19,38 @@ namespace NormativeCalculatorAPI.Controllers
 
         [Authorize]
         [HttpGet]
-        public async Task<IActionResult> GetIngredientsAsync(CancellationToken cancellationToken)
+        public async Task<IActionResult> GetIngredients(CancellationToken cancellationToken)
         {
             return Ok(await _ingredientsService.GetIngredientsAsync(cancellationToken));
         }
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> InsertRecipeAsync(AddIngredientRequest request, CancellationToken cancellationToken)
+        public async Task<IActionResult> InsertIngredient(AddIngredientRequest request, CancellationToken cancellationToken)
         {
             return Ok(await _ingredientsService.InsertIngredientAsync(request, cancellationToken));
         }
+
+        [Authorize]
+        [HttpPost("GetIngredientsForTable")]
+        public async Task<IActionResult> GetIngredientsForTable(TableRequest request, CancellationToken cancellationToken)
+        {
+            return Ok(await _ingredientsService.GetIngredientsForTableAsync(request, cancellationToken));
+        }
+
+        [Authorize]
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateIngredient(int id, AddIngredientRequest request, CancellationToken cancellationToken)
+        {
+            return Ok(await _ingredientsService.UpdateRecipeCategoryAsync(id, request, cancellationToken));
+        }
+
+        [Authorize]
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Deleteingredient(int id, CancellationToken cancellationToken)
+        {
+            return Ok(await _ingredientsService.DeleteIngredientAsync(id, cancellationToken));
+        }
+
     }
 }

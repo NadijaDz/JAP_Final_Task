@@ -1,5 +1,6 @@
 <div class="container" style="margin-top: 100px;">
-  <h1>Add new recipe in category {{nameofCategory}}</h1>
+  <h1 *ngIf="isAddMode">Add new recipe in category {{nameofCategory}}</h1>
+  <h1 *ngIf="!isAddMode">Edit recipe </h1>
 
   <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
@@ -66,13 +67,22 @@
     </div>
 
     <div class="form-group">
-      <button type="button" class="btn btn-primary add-ing" (click)="addNewIngredient()">*Add ingredient to recipe
+      <label for="recommendedPrice">*Recommended selling price</label>
+      <input type="number" min="1" id="recommendedPrice" name="recommendedPrice" formControlName="recommendedPrice" class="form-control"
+        [ngClass]="{'is-invalid':form.recommendedPrice.touched && form.recommendedPrice.errors }">
+      <div *ngIf="form.recommendedPrice.errors" class="invalid-feedback">
+        <div *ngIf="form.recommendedPrice.errors.required">Recommended selling price is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button type="button" class="btn btn-primary add-ing" (click)="addNewIngredientRow()">*Add ingredient to recipe
       </button>
       <button type="button" class="btn btn-success ml-3" (click)="open()">Add new ingredient </button>
     </div>
 
     <div class="form-group" style="float:right">
-      <button type="submit" class="btn btn-secondary">Cancel</button>
+      <button type="button" class="btn btn-secondary">Cancel</button>
       <button type="submit" class="btn btn-success ml-3" [disabled]="!recipeForm.valid">Submit</button>
     </div>
   </form>

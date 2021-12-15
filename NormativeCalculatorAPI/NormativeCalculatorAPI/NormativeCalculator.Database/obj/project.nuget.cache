@@ -1,12 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "CnTGcV0gexncViQC9JmG1UIKdJ6o7fZZHwyKKMwkLvvLPJbt2EWY+/P+siyiwqdO42ZHvrqPhQCDutKbsfPCoQ==",
+  "dgSpecHash": "bMnXRrStYnlKg8B4R+Hjq1+ahbkSe7j10L6jhiG1tLYDTDRAenfVh4k716lokON2jC35bDpR49zaKe1lekQBUw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Nadija\\Desktop\\backup2 jap  task 2\\NormativeCalculatorAPI\\NormativeCalculatorAPI\\NormativeCalculator.Database\\NormativeCalculator.Database.csproj",
+  "projectFilePath": "C:\\Users\\Nadija\\Desktop\\jap task 3\\JAP_Final_Task\\NormativeCalculatorAPI\\NormativeCalculatorAPI\\NormativeCalculator.Database\\NormativeCalculator.Database.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Nadija\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Nadija\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
     "C:\\Users\\Nadija\\.nuget\\packages\\entityframework\\6.1.0\\entityframework.6.1.0.nupkg.sha512",
+    "C:\\Users\\Nadija\\.nuget\\packages\\fluentvalidation\\10.3.6\\fluentvalidation.10.3.6.nupkg.sha512",
+    "C:\\Users\\Nadija\\.nuget\\packages\\fluentvalidation.aspnetcore\\10.3.6\\fluentvalidation.aspnetcore.10.3.6.nupkg.sha512",
+    "C:\\Users\\Nadija\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\10.3.6\\fluentvalidation.dependencyinjectionextensions.10.3.6.nupkg.sha512",
     "C:\\Users\\Nadija\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Nadija\\.nuget\\packages\\microsoft.aspnet.identity.core\\2.2.3\\microsoft.aspnet.identity.core.2.2.3.nupkg.sha512",
     "C:\\Users\\Nadija\\.nuget\\packages\\microsoft.aspnet.identity.entityframework\\2.2.3\\microsoft.aspnet.identity.entityframework.2.2.3.nupkg.sha512",

@@ -7,7 +7,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./recipe-detail.component.css'],
 })
 export class RecipeDetailComponent implements OnInit {
-  @Input() fromParent;
+  @Input() recipeDetails;
   constructor(public activeModal: NgbActiveModal) {}
 
   ngOnInit(): void {}

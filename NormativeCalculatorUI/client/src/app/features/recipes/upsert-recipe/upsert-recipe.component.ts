@@ -6,16 +6,16 @@ import { IngredientsService } from 'src/app/core/services/ingredients.service';
 import { RecipesService } from 'src/app/core/services/recipes.service';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
-import { AddIngredientsComponent } from 'src/app/features/ingredients/add-ingredients/add-ingredients.component';
 import { Ingredient } from 'src/app/core/models/ingredient.model';
 import { MeasureUnit } from 'src/app/core/models/measure-unit.model';
+import { UpsertIngredientComponent } from '../../ingredients/upsert-ingredients/upsert-ingredient.component';
 
 @Component({
-  selector: 'app-add-recipe',
-  templateUrl: './add-recipe.component.html',
-  styleUrls: ['./add-recipe.component.css'],
+  selector: 'app-upsert-recipe',
+  templateUrl: './upsert-recipe.component.html',
+  styleUrls: ['./upsert-recipe.component.css'],
 })
-export class AddRecipeComponent implements OnInit {
+export class UpsertRecipeComponent implements OnInit {
   recipeForm: FormGroup;
   categoryId: string;
   ingredients: Ingredient[] = [];
@@ -33,6 +33,8 @@ export class AddRecipeComponent implements OnInit {
     false
   );
   ingredientEumKeys: any = [];
+  isAddMode: boolean;
+  recipeId: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -50,8 +52,13 @@ export class AddRecipeComponent implements OnInit {
   ngOnInit() {
     this.categoryId = this.route.snapshot.paramMap.get('id');
     this.nameofCategory = this.route.snapshot.paramMap.get('name');
+    this.recipeId = this.route.snapshot.paramMap.get('recipeId');
+    this.isAddMode = !this.recipeId;
     this.initializeForm();
     this.getIngredients();
+    if (!this.isAddMode) {
+      this.getByRecipeId();
+    }
   }
 
   initializeForm() {
@@ -59,6 +66,35 @@ export class AddRecipeComponent implements OnInit {
       name: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
       ingredients: new FormArray([], Validators.required),
+      recommendedPrice: new FormControl(null, Validators.required),
+    });
+  }
+
+  getByRecipeId(){
+    this.recipesService
+    .getById(this.recipeId)
+    .pipe(first())
+    .subscribe((response) => {
+      //add form controls for each ingredient row for push control
+      response["recipeIngredient"].forEach((element, index) => {
+        this.addNewIngredientRow();
+      });
+
+      this.recipeForm.patchValue({
+        ingredients: response["recipeIngredient"],
+        name: response["name"],
+        description: response["description"],
+        recommendedPrice: response ["recommendedPrice"]  
+      })
+
+      //after patch values need filter measure unit dropdowns and calculated total cost for ing
+      setTimeout(() => {
+        response["recipeIngredient"].forEach((element, index) => {
+          this.changeMeasureUnit(index);
+          this.totalCostPerIngredient(index);
+        });
+        }, 500);
+    
     });
   }
 
@@ -67,15 +103,40 @@ export class AddRecipeComponent implements OnInit {
   }
 
   onSubmit() {
+    
     if (this.recipeForm.invalid) {
       return;
     }
 
+    if (this.isAddMode) {
+      this.addNewRecipe();
+    } else {
+      this.updateRecipe();
+    }
+  }
 
-
+  addNewRecipe(){
     this.recipeForm.value.recipeCategoryId = this.categoryId;
     this.recipesService
       .save(this.recipeForm.value)
+      .pipe(first())
+      .subscribe(
+        (data) => {
+          this.toastr.success('Data is successfully saved!', 'Success!');
+          this.router.navigate([
+            '/recipes/' + this.categoryId + '/' + this.nameofCategory,
+          ]);
+        },
+        (error) => {
+          this.toastr.error('Something went wrong', 'Error!');
+        }
+      );
+  }
+
+  updateRecipe(){
+    this.recipeForm.value.recipeCategoryId = this.categoryId;
+    this.recipesService
+      .update(this.recipeId, this.recipeForm.value)
       .pipe(first())
       .subscribe(
         (data) => {
@@ -99,7 +160,7 @@ export class AddRecipeComponent implements OnInit {
       });
   }
 
-  addNewIngredient() {
+  addNewIngredientRow() {
     (<FormArray>this.recipeForm.get('ingredients')).push(
       new FormGroup({
         ingredientId: new FormControl(null, Validators.required),
@@ -122,7 +183,8 @@ export class AddRecipeComponent implements OnInit {
         'controls'
       ].costIngredient.value;
     (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
-    this.ingredientEumKeys.removeAt(index);
+    //splice remove 1 item on index position
+    this.ingredientEumKeys.splice(index,1);
   }
 
   totalCostPerIngredient(index) {
@@ -142,12 +204,11 @@ export class AddRecipeComponent implements OnInit {
 
       var priceIngredient = 0;
 
-      if (measureUnit == 'kg' ||  measureUnit == 'L') {
+      if (measureUnit == MeasureUnit.kg ||  measureUnit == MeasureUnit.L) {
         priceIngredient = ingredient.unitPrice * (unitQuantity * 1000);
       } 
       else {
         priceIngredient = ingredient.unitPrice * unitQuantity;
-
       }
 
       this.recipeForm
@@ -176,9 +237,9 @@ export class AddRecipeComponent implements OnInit {
 
     var ingredient = this.ingredients.find((x) => x.id == ingredientId);
     var measureUnitFromIngredient = ingredient.measureUnit;
-
+    
     var measureUnitValueFromIngredient =
-      MeasureUnit[measureUnitFromIngredient].toString();
+    MeasureUnit[measureUnitFromIngredient].toString();
 
     //set measure unit base measure unit from ingredient
     this.recipeForm
@@ -218,7 +279,7 @@ export class AddRecipeComponent implements OnInit {
   }
 
   open() {
-    const modalRef = this.modalService.open(AddIngredientsComponent, {
+    const modalRef = this.modalService.open(UpsertIngredientComponent, {
       scrollable: true,
     });
 

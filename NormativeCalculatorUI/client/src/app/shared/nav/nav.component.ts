@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { first } from 'rxjs/operators';
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { LoginService } from 'src/app/core/services/login.service';
 
 @Component({
@@ -14,31 +16,14 @@ export class NavComponent implements OnInit {
   isUserLoggedIn: boolean = false;
 
   constructor(
-    private cookieService: CookieService,
-    private loginService: LoginService,
-    private router: Router
+    private authenticationService: AuthenticationService
   ) {}
 
   ngOnInit() {
-    this.cookieValue = this.cookieService.get('auth_cookie');
-    if (
-      this.cookieValue != null &&
-      this.cookieValue != undefined &&
-      this.cookieValue != ''
-    ) {
-      this.isUserLoggedIn = true;
-    } else {
-      this.isUserLoggedIn = false;
-    }
+    this.isUserLoggedIn = this.authenticationService.isUserLoggedIn;
   }
 
   logout() {
-    this.loginService
-      .signout()
-      .pipe(first())
-      .subscribe(() => {
-        this.router.navigate(['/login']);
-        this.isUserLoggedIn = false;
-      });
+    this.authenticationService.logout();
   }
 }

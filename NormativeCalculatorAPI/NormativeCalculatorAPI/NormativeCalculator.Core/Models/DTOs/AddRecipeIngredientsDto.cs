@@ -16,5 +16,6 @@ namespace NormativeCalculator.Core.Models.DTOs
 
         [Column(TypeName = "decimal(18,4)")]
         public decimal IngredientPrice { get; set; }
+
     }
 }

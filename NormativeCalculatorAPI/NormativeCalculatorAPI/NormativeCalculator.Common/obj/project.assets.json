@@ -16,11 +16,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Nadija\\Desktop\\backup2 jap  task 2\\NormativeCalculatorAPI\\NormativeCalculatorAPI\\NormativeCalculator.Common\\NormativeCalculator.Common.csproj",
+      "projectUniqueName": "C:\\Users\\Nadija\\Desktop\\jap task 3\\JAP_Final_Task\\NormativeCalculatorAPI\\NormativeCalculatorAPI\\NormativeCalculator.Common\\NormativeCalculator.Common.csproj",
       "projectName": "NormativeCalculator.Common",
-      "projectPath": "C:\\Users\\Nadija\\Desktop\\backup2 jap  task 2\\NormativeCalculatorAPI\\NormativeCalculatorAPI\\NormativeCalculator.Common\\NormativeCalculator.Common.csproj",
+      "projectPath": "C:\\Users\\Nadija\\Desktop\\jap task 3\\JAP_Final_Task\\NormativeCalculatorAPI\\NormativeCalculatorAPI\\NormativeCalculator.Common\\NormativeCalculator.Common.csproj",
       "packagesPath": "C:\\Users\\Nadija\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Nadija\\Desktop\\backup2 jap  task 2\\NormativeCalculatorAPI\\NormativeCalculatorAPI\\NormativeCalculator.Common\\obj\\",
+      "outputPath": "C:\\Users\\Nadija\\Desktop\\jap task 3\\JAP_Final_Task\\NormativeCalculatorAPI\\NormativeCalculatorAPI\\NormativeCalculator.Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
