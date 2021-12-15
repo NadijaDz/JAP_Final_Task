@@ -28,7 +28,7 @@ installing workspace npm dependencies:
 -Browser will open application and if you want to use application you need to login with your Google Account.
 
 
-About application
+#About application
 
 -This is application for calculated  price for ingredients of recipe. When user is logged, on initial screen can see all categories of recipes.
 -User can click on category, and when click, will see new page with all recipes of selected category. On this page you can search recipes
